@@ -9,6 +9,7 @@ export const APP_LABEL_KEY: Record<string, OpenInAppKey | undefined> = {
   cursor: 'app.cursor',
   vscode: 'app.vscode',
   vscodeinsiders: 'app.vscodeinsiders',
+  vscodium: 'app.vscodium',
   windsurf: 'app.windsurf',
   zed: 'app.zed',
   sublimetext: 'app.sublimetext',

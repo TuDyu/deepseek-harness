@@ -240,6 +240,21 @@ export const OPEN_IN_APP_CATALOG: readonly OpenInAppApp[] = [
     },
   },
   {
+    id: 'vscodium',
+    platforms: {
+      darwin: macApp('VSCodium.app'),
+      win32: spec(
+        appPaths('VSCodium.exe'),
+        installRecord('VSCodium', 'VSCodium.exe'),
+        file([
+          '${LOCALAPPDATA}/Programs/VSCodium/VSCodium.exe',
+          '${ProgramFiles}/VSCodium/VSCodium.exe',
+        ]),
+      ),
+      linux: desktopSpec('codium', cli('codium')),
+    },
+  },
+  {
     id: 'windsurf',
     platforms: {
       darwin: macApp('Windsurf.app'),

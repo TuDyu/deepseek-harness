@@ -8,6 +8,7 @@ const PRODUCT_NAMES = {
   'app.cursor': 'Cursor',
   'app.vscode': 'VS Code',
   'app.vscodeinsiders': 'VS Code Insiders',
+  'app.vscodium': 'VSCodium',
   'app.windsurf': 'Windsurf',
   'app.zed': 'Zed',
   'app.sublimetext': 'Sublime Text',

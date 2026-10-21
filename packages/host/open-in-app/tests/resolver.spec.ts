@@ -243,6 +243,18 @@ describe('resolveLaunch locators', () => {
       .resolves.toBeNull()
   })
 
+  it('resolves VSCodium from its user-local installation directory', async () => {
+    const root = await tempRoot()
+    const local = join(root, 'local')
+    await mkdir(join(local, 'Programs', 'VSCodium'), { recursive: true })
+    await writeFile(join(local, 'Programs', 'VSCodium', 'VSCodium.exe'), 'exe')
+    const found = await resolveLaunch(byId('vscodium'), TIMEOUT_MS, bare({
+      platform: 'win32', env: { LOCALAPPDATA: local, ProgramFiles: join(root, 'pf') }, run: runner(() => ''),
+    }))
+    expect(found?.launch).toEqual({ kind: 'argv', command: `${local}/Programs/VSCodium/VSCodium.exe`, args: [] })
+    expect(found?.icon).toEqual({ kind: 'executable', path: `${local}/Programs/VSCodium/VSCodium.exe` })
+  })
+
   it('expands ~/ against the injected home for Toolbox scripts, with no Windows icon claim on Linux', async () => {
     const home = await tempRoot()
     const script = join(home, '.local', 'share', 'JetBrains', 'Toolbox', 'scripts', 'idea')
