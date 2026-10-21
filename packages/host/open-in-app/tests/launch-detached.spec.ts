@@ -11,7 +11,32 @@ vi.mock('node:child_process', async importOriginal => ({
 afterEach(() => {
   vi.restoreAllMocks()
   vi.mocked(spawn).mockReset()
+  vi.unstubAllEnvs()
   vi.useRealTimers()
+})
+
+describe('launchDetachedApp environment', () => {
+  it('removes the host Electron run-as-Node selector unless the adapter sets it', async () => {
+    vi.useFakeTimers()
+    vi.stubEnv('ELECTRON_RUN_AS_NODE', '1')
+    vi.mocked(spawn).mockImplementation(() => new ChildProcess())
+    try {
+      const launched = launchDetachedApp('fixture-app', [], { watchMs: 10 })
+      await vi.advanceTimersByTimeAsync(10)
+      await expect(launched).resolves.toBeUndefined()
+      expect(vi.mocked(spawn).mock.calls[0]?.[2]?.env).not.toHaveProperty('ELECTRON_RUN_AS_NODE')
+
+      const adapterSet = launchDetachedApp('fixture-app', [], { watchMs: 10, env: { ELECTRON_RUN_AS_NODE: '1' } })
+      await vi.advanceTimersByTimeAsync(10)
+      await expect(adapterSet).resolves.toBeUndefined()
+      expect(vi.mocked(spawn).mock.calls[1]?.[2]?.env).toMatchObject({ ELECTRON_RUN_AS_NODE: '1' })
+    } finally {
+      vi.restoreAllMocks()
+      vi.mocked(spawn).mockReset()
+      vi.unstubAllEnvs()
+      vi.useRealTimers()
+    }
+  })
 })
 
 describe('launchDetachedApp watch window', () => {

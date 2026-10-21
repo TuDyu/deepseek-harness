@@ -59,7 +59,11 @@ export type OpenInAppLaunchOutcome = 'launched' | 'missing' | 'failed'
  * Launch one application adapter detached from this process: the child gets a
  * credential-scrubbed environment (never the harness's `*KEY*`/`*SECRET*`
  * variables) plus the adapter's explicit environment entries, holds no stdio
- * pipe, and outlives dsh. Windows GUI processes remain visible unless the
+ * pipe, and outlives dsh. The host's Electron run-as-Node selector is removed
+ * from that environment, because a launched Electron application reads it and
+ * starts as a plain Node script runner instead of opening a window; an adapter
+ * that launches Node through Electron sets it back in its own entries.
+ * Windows GUI processes remain visible unless the
  * adapter explicitly hides its own CLI process. Launch success is decoupled
  * from process exit — launchers such as kitty or the JetBrains IDEs stay in
  * the foreground for their whole window lifetime, so the watch window only
@@ -73,11 +77,13 @@ export type OpenInAppLaunchOutcome = 'launched' | 'missing' | 'failed'
  */
 export const launchDetachedApp: OpenInAppLauncher = (command, args, options) =>
   new Promise((resolve, reject) => {
+    const inherited = scrubbedParentEnv()
+    delete inherited.ELECTRON_RUN_AS_NODE
     const child = spawn(command, [...args], {
       detached: true,
       stdio: 'ignore',
       windowsHide: options.windowsHide,
-      env: { ...scrubbedParentEnv(), ...options.env },
+      env: { ...inherited, ...options.env },
     })
     let settled = false
     const settle = (outcome: () => void): void => {
