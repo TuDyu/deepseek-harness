@@ -3857,7 +3857,7 @@ export const CLIENT_SLOT_API: readonly ClientSlotEntry[] = [
     doc: 'Brand name rendered beside the expanded mark. Declared by this\npackage\'s `sidebar` entry; the shell supplies a generic text fallback.',
     registerOptions: [],
     ownerProps: [
-      '/**\n * Owner share of the brand-name occupant: the localized build wordmark. The\n * shell owns the words so every occupant renders the same identity in the\n * same language; the occupant owns their arrangement and styling.\n */\nexport interface SidebarBrandNameOwnerProps {\n  /** Wordmark lettering beside the mark: the short product name. */\n  wordmark: string\n  /** Local-build stamp rendered in the wordmark\'s solid badge. */\n  localBuildStamp: string\n}',
+      '/** Empty owner share for the sidebar brand-name occupant. */\nexport interface SidebarBrandNameOwnerProps {\n  /** Marker field: the occupant owns its own content and width. */\n  children?: never\n}',
     ],
     ownerPropsReferences: [],
     standardProps: [

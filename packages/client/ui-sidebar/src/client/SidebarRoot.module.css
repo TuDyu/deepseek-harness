@@ -275,7 +275,8 @@
 }
 
 /* Mark and name are independent slots; the shell owns their shared baseline,
-   spacing, and height so either occupant can vary in width. */
+   spacing, and height so either occupant can vary in width. The stacked variant
+   adds the build-version line below the wordmark. */
 .brandIdentity {
   display: inline-flex;
   align-items: center;
@@ -284,11 +285,34 @@
   min-width: 0;
 }
 
+.brandIdentityStacked {
+  height: 34px;
+}
+
 .brandMark {
   flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Local-build seal: a dashed frame carries the "not a release build" signal in
+   the secondary ink, so the fish keeps the primary one. */
+.sealFrame {
+  stroke: var(--dsw-alias-label-secondary);
+  stroke-opacity: 0.75;
+  stroke-width: 1.3;
+  stroke-dasharray: 3.1 2.6;
+  stroke-linecap: round;
+}
+
+.brandText {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1px;
+  min-width: 0;
 }
 
 .brandName {
@@ -303,21 +327,47 @@
   letter-spacing: 0.04em;
 }
 
-.fallbackBrandName {
-  font-size: 17px;
-  letter-spacing: 0px;
-  white-space: nowrap;
-}
-
-.localBuildBrand {
-  flex: none;
+/* One-line wordmark: DSH lettering beside the solid local-build stamp. */
+.brandLockup {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1px;
+  align-items: center;
+  gap: 7px;
   height: 24px;
   white-space: nowrap;
+  color: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+}
+
+.localBuildStamp {
+  display: inline-flex;
+  align-items: center;
+  height: 15px;
+  padding: 0 5px;
+  border-radius: 2.5px;
+  background: var(--dsw-alias-label-primary);
+  color: var(--dsw-alias-label-primary-inverted);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0.09em;
+}
+
+/* Build version under the wordmark: readable at a glance, unlike the old 6px chip. */
+.brandVersion {
+  flex: none;
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--dsw-alias-label-secondary);
+  font-family: var(--ds-font-family-code);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 10px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Local-build fallbacks copy the version, also on macOS, where the
@@ -326,12 +376,6 @@
   display: inline-flex;
   cursor: pointer;
   -webkit-app-region: no-drag;
-}
-
-.localBuildTitle {
-  font-size: 12px;
-  line-height: 13px;
-  letter-spacing: 0;
 }
 
 .iconButton {
@@ -414,22 +458,6 @@
    secondary icon-button ink. */
 .collapsed .iconButton {
   color: var(--dsw-alias-label-primary);
-}
-
-.buildVersion {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  height: 10px;
-  padding: 0 3px;
-  border-radius: 2px;
-  color: var(--dsw-alias-label-primary-inverted);
-  background: var(--dsw-alias-label-primary);
-  font-family: var(--ds-font-family-code);
-  font-size: 6px;
-  font-weight: 500;
-  line-height: 10px;
-  white-space: nowrap;
 }
 
 /* New Session: 38px bar, 12px radius (figma 133:7634 geometry, squared-off

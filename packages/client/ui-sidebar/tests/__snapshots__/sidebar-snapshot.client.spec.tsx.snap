@@ -106,7 +106,7 @@ exports[`sidebar shell snapshots > renders Windows caption controls in expanded 
       >
         <span
           aria-hidden="true"
-          class="brandIdentity"
+          class="brandIdentity brandIdentityStacked"
         >
           <span
             class="brandMark"
@@ -121,38 +121,45 @@ exports[`sidebar shell snapshots > renders Windows caption controls in expanded 
               >
                 <svg
                   aria-hidden="true"
-                  data-content="965fe321"
+                  data-content="1dab15b9"
                   fill="none"
-                  height="17.6580310880829"
-                  viewBox="0 0 23.16 17.04"
+                  height="24"
+                  viewBox="0 0 24 24"
                   width="24"
                 />
               </span>
             </div>
           </span>
           <span
-            class="brandName"
+            class="brandText"
           >
-            <div
-              data-slot="sidebar.brand.name"
-              style="display: contents;"
+            <span
+              class="brandName"
             >
-              <span
-                class="localBuildBrand copyVersion"
-                data-copy-version="true"
+              <div
+                data-slot="sidebar.brand.name"
+                style="display: contents;"
               >
                 <span
-                  class="localBuildTitle"
+                  class="brandLockup"
                 >
-                  DSH Local Build
+                  <span>
+                    DSH
+                  </span>
+                  <span
+                    class="localBuildStamp"
+                  >
+                    LOCAL BUILD
+                  </span>
                 </span>
-                <span
-                  class="buildVersion"
-                >
-                  1.2.3-rc.4-abc1234-dirty
-                </span>
-              </span>
-            </div>
+              </div>
+            </span>
+            <span
+              class="brandVersion copyVersion"
+              data-copy-version="true"
+            >
+              1.2.3-rc.4-abc1234-dirty
+            </span>
           </span>
         </span>
       </button>
@@ -259,10 +266,10 @@ exports[`sidebar shell snapshots > renders the collapsed rail after the crossfad
           >
             <svg
               aria-hidden="true"
-              data-content="965fe321"
+              data-content="1dab15b9"
               fill="none"
-              height="17.6580310880829"
-              viewBox="0 0 23.16 17.04"
+              height="24"
+              viewBox="0 0 24 24"
               width="24"
             />
           </div>
@@ -358,7 +365,7 @@ exports[`sidebar shell snapshots > renders the expanded column (wordmark, capsul
       >
         <span
           aria-hidden="true"
-          class="brandIdentity"
+          class="brandIdentity brandIdentityStacked"
         >
           <span
             class="brandMark"
@@ -373,38 +380,45 @@ exports[`sidebar shell snapshots > renders the expanded column (wordmark, capsul
               >
                 <svg
                   aria-hidden="true"
-                  data-content="965fe321"
+                  data-content="1dab15b9"
                   fill="none"
-                  height="17.6580310880829"
-                  viewBox="0 0 23.16 17.04"
+                  height="24"
+                  viewBox="0 0 24 24"
                   width="24"
                 />
               </span>
             </div>
           </span>
           <span
-            class="brandName"
+            class="brandText"
           >
-            <div
-              data-slot="sidebar.brand.name"
-              style="display: contents;"
+            <span
+              class="brandName"
             >
-              <span
-                class="localBuildBrand copyVersion"
-                data-copy-version="true"
+              <div
+                data-slot="sidebar.brand.name"
+                style="display: contents;"
               >
                 <span
-                  class="localBuildTitle"
+                  class="brandLockup"
                 >
-                  DSH Local Build
+                  <span>
+                    DSH
+                  </span>
+                  <span
+                    class="localBuildStamp"
+                  >
+                    LOCAL BUILD
+                  </span>
                 </span>
-                <span
-                  class="buildVersion"
-                >
-                  1.2.3-rc.4-abc1234-dirty
-                </span>
-              </span>
-            </div>
+              </div>
+            </span>
+            <span
+              class="brandVersion copyVersion"
+              data-copy-version="true"
+            >
+              1.2.3-rc.4-abc1234-dirty
+            </span>
           </span>
         </span>
       </button>
@@ -502,7 +516,7 @@ exports[`sidebar shell snapshots > renders the expanded column in the default lo
       >
         <span
           aria-hidden="true"
-          class="brandIdentity"
+          class="brandIdentity brandIdentityStacked"
         >
           <span
             class="brandMark"
@@ -517,38 +531,45 @@ exports[`sidebar shell snapshots > renders the expanded column in the default lo
               >
                 <svg
                   aria-hidden="true"
-                  data-content="965fe321"
+                  data-content="1dab15b9"
                   fill="none"
-                  height="17.6580310880829"
-                  viewBox="0 0 23.16 17.04"
+                  height="24"
+                  viewBox="0 0 24 24"
                   width="24"
                 />
               </span>
             </div>
           </span>
           <span
-            class="brandName"
+            class="brandText"
           >
-            <div
-              data-slot="sidebar.brand.name"
-              style="display: contents;"
+            <span
+              class="brandName"
             >
-              <span
-                class="localBuildBrand copyVersion"
-                data-copy-version="true"
+              <div
+                data-slot="sidebar.brand.name"
+                style="display: contents;"
               >
                 <span
-                  class="localBuildTitle"
+                  class="brandLockup"
                 >
-                  DSH 本地构建
+                  <span>
+                    DSH
+                  </span>
+                  <span
+                    class="localBuildStamp"
+                  >
+                    LOCAL BUILD
+                  </span>
                 </span>
-                <span
-                  class="buildVersion"
-                >
-                  1.2.3-rc.4-abc1234-dirty
-                </span>
-              </span>
-            </div>
+              </div>
+            </span>
+            <span
+              class="brandVersion copyVersion"
+              data-copy-version="true"
+            >
+              1.2.3-rc.4-abc1234-dirty
+            </span>
           </span>
         </span>
       </button>

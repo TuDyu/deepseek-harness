@@ -19,7 +19,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import {
-  FishLogo, IconAppsAddOutlineRegular, IconNewChatOutlineMedium, IconNewChatOutlineRegular,
+  IconAppsAddOutlineRegular, IconNewChatOutlineMedium, IconNewChatOutlineRegular,
   IconPanelLeftOutlineRegular, focusWithoutRing, isBehindModal, isDarwinDesktop, Menu, ShortcutKeys, Toast, Tooltip, useModalLayer,
   writeClipboard,
 } from '@deepseek-ai/dsh-client-ui-primitives'
@@ -27,6 +27,7 @@ import type { InjectFace, PropsRenderSlots, PropsRuntime } from '@deepseek-ai/ds
 import type {
   SidebarPanelActionsOwnerProps, SidebarPanelMetadata, SidebarRootComponentProps, SidebarRootInjected, SidebarSectionOwnerProps,
 } from './contract/slots.ts'
+import { LocalBuildMark } from './LocalBuildMark.tsx'
 import { FIXED_PANEL_ID } from './panel-pins.ts'
 import css from './SidebarRoot.module.css'
 
@@ -269,7 +270,7 @@ export function SidebarRoot({
       >
         {!wide && !windowsTitlebar && (
           <span className={css.railMark} aria-hidden="true">
-            {renderSlot('sidebar.brand.mark', { size: 24 }, { fallback: <FishLogo size={24} /> })}
+            {renderSlot('sidebar.brand.mark', { size: 24 }, { fallback: <LocalBuildMark size={24} /> })}
             <span className={css.localBuildBadge} title={t('brand.localBuild')} />
           </span>
         )}
@@ -312,28 +313,34 @@ export function SidebarRoot({
             Mouse clicks on the local-build fallbacks copy the version instead. */}
         {wide && (() => {
           const identity = (
-            <span className={css.brandIdentity} aria-hidden="true">
+            <span className={clsx(css.brandIdentity, buildVersion !== undefined && css.brandIdentityStacked)} aria-hidden="true">
               <span className={css.brandMark}>
                 {renderSlot('sidebar.brand.mark', { size: 24 }, {
                   fallback: buildVersion === undefined
-                    ? <FishLogo size={24} />
-                    : <span className={css.copyVersion} data-copy-version onClick={copyVersion(buildVersion)}><FishLogo size={24} /></span>,
-                })}
-              </span>
-              <span className={css.brandName}>
-                {renderSlot('sidebar.brand.name', {
-                  wordmark: t('brand.wordmark'),
-                  localBuildStamp: t('brand.localBuildStamp'),
-                }, {
-                  fallback: buildVersion === undefined
-                    ? <span className={css.fallbackBrandName}>{t('brand.localBuild')}</span>
+                    ? <LocalBuildMark size={24} />
                     : (
-                      <span className={clsx(css.localBuildBrand, css.copyVersion)} data-copy-version onClick={copyVersion(buildVersion)}>
-                        <span className={css.localBuildTitle}>{t('brand.localBuild')}</span>
-                        <span className={css.buildVersion}>{buildVersion}</span>
+                      <span className={css.copyVersion} data-copy-version onClick={copyVersion(buildVersion)}>
+                        <LocalBuildMark size={24} />
                       </span>
                     ),
                 })}
+              </span>
+              <span className={css.brandText}>
+                <span className={css.brandName}>
+                  {renderSlot('sidebar.brand.name', {}, {
+                    fallback: (
+                      <span className={css.brandLockup}>
+                        <span>{t('brand.wordmark')}</span>
+                        <span className={css.localBuildStamp}>{t('brand.localBuildStamp')}</span>
+                      </span>
+                    ),
+                  })}
+                </span>
+                {buildVersion !== undefined && (
+                  <span className={clsx(css.brandVersion, css.copyVersion)} data-copy-version onClick={copyVersion(buildVersion)}>
+                    {buildVersion}
+                  </span>
+                )}
               </span>
             </span>
           )

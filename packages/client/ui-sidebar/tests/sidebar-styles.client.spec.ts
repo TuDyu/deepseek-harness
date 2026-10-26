@@ -84,15 +84,24 @@ describe('SidebarRoot.module.css', () => {
     expect(declarations('.collapsed .newSession')?.get('width')).toBe('36px')
   })
 
-  it('keeps the slotted brand row one line tall with a compact mark-to-name gap', () => {
-    // The wordmark whole (lettering plus badge) rides the 24px name row.
+  it('keeps the slotted brand row one line tall and stacks the version under it', () => {
+    // The wordmark whole (lettering plus stamp) rides the 24px name row; the
+    // build-version line adds 10px, which the stacked identity reserves.
     expect(declarations('.brandIdentity')?.get('gap')).toBe('5px')
     expect(declarations('.brandIdentity')?.get('height')).toBe('24px')
+    expect(declarations('.brandIdentityStacked')?.get('height')).toBe('34px')
     expect(declarations('.brandName')?.get('height')).toBe('24px')
     expect(declarations('.brandName')?.get('line-height')).toBe('24px')
     expect(declarations('.brandName')?.get('font-size')).toBe('18px')
-    expect(declarations('.fallbackBrandName')?.get('font-size')).toBe('17px')
-    expect(declarations('.fallbackBrandName')?.get('white-space')).toBe('nowrap')
+    expect(declarations('.brandLockup')?.get('height')).toBe('24px')
+    expect(declarations('.localBuildStamp')?.get('font-size')).toBe('9px')
+    expect(declarations('.brandVersion')?.get('font-size')).toBe('10px')
+    expect(declarations('.brandVersion')?.get('line-height')).toBe('10px')
+  })
+
+  it('draws the local-build seal in the secondary ink', () => {
+    expect(declarations('.sealFrame')?.get('stroke')).toBe('var(--dsw-alias-label-secondary)')
+    expect(declarations('.sealFrame')?.get('stroke-dasharray')).toBe('3.1 2.6')
   })
 
   it('marks the collapsed rail with the corner build dot', () => {

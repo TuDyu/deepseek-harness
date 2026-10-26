@@ -63,16 +63,10 @@ export interface SidebarBrandMarkOwnerProps {
   size: number
 }
 
-/**
- * Owner share of the brand-name occupant: the localized build wordmark. The
- * shell owns the words so every occupant renders the same identity in the
- * same language; the occupant owns their arrangement and styling.
- */
+/** Empty owner share for the sidebar brand-name occupant. */
 export interface SidebarBrandNameOwnerProps {
-  /** Wordmark lettering beside the mark: the short product name. */
-  wordmark: string
-  /** Local-build stamp rendered in the wordmark's solid badge. */
-  localBuildStamp: string
+  /** Marker field: the occupant owns its own content and width. */
+  children?: never
 }
 
 /** Icon presentation supplied by the global panel row. */
