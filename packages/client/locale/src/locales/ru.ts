@@ -35,6 +35,8 @@ export const ru = {
   'expand': 'Развернуть',
   'back': 'Назад',
   'brand.localBuild': 'Локальная сборка DSH',
+  'brand.wordmark': 'DSH',
+  'brand.localBuildStamp': 'LOCAL BUILD',
   'workspace.defaultName': 'Рабочая область по умолчанию',
   'unknown': 'Неизвестно',
   'none': 'Нет',

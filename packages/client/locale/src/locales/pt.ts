@@ -35,6 +35,8 @@ export const pt = {
   'expand': 'Expandir',
   'back': 'Voltar',
   'brand.localBuild': 'Versão local do DSH',
+  'brand.wordmark': 'DSH',
+  'brand.localBuildStamp': 'LOCAL BUILD',
   'workspace.defaultName': 'Espaço de trabalho padrão',
   'unknown': 'Desconhecido',
   'none': 'Nenhum',

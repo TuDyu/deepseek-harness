@@ -388,9 +388,26 @@
 }
 
 .railMark {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Local-build marker: a corner dot on the brand mark, so it holds at every
+   column width and in the collapsed rail without taking inline space. The
+   tooltip carries the words. */
+.localBuildBadge {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  corner-shape: round;
+  background: var(--dsw-alias-state-success-primary);
+  box-shadow: 0 0 0 2px var(--dsw-specific-sidebar-fill);
+  pointer-events: none;
 }
 
 /* Rail icons ride the primary ink (figma rail spec); expanded keeps the

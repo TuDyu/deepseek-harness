@@ -266,6 +266,10 @@ exports[`sidebar shell snapshots > renders the collapsed rail after the crossfad
               width="24"
             />
           </div>
+          <span
+            class="localBuildBadge"
+            title="DSH Local Build"
+          />
         </span>
         <svg
           aria-hidden="true"

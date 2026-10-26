@@ -84,7 +84,8 @@ describe('SidebarRoot.module.css', () => {
     expect(declarations('.collapsed .newSession')?.get('width')).toBe('36px')
   })
 
-  it('keeps full-size brand artwork with a compact mark-to-name gap', () => {
+  it('keeps the slotted brand row one line tall with a compact mark-to-name gap', () => {
+    // The wordmark whole (lettering plus badge) rides the 24px name row.
     expect(declarations('.brandIdentity')?.get('gap')).toBe('5px')
     expect(declarations('.brandIdentity')?.get('height')).toBe('24px')
     expect(declarations('.brandName')?.get('height')).toBe('24px')
@@ -92,5 +93,11 @@ describe('SidebarRoot.module.css', () => {
     expect(declarations('.brandName')?.get('font-size')).toBe('18px')
     expect(declarations('.fallbackBrandName')?.get('font-size')).toBe('17px')
     expect(declarations('.fallbackBrandName')?.get('white-space')).toBe('nowrap')
+  })
+
+  it('marks the collapsed rail with the corner build dot', () => {
+    expect(declarations('.railMark')?.get('position')).toBe('relative')
+    expect(declarations('.localBuildBadge')?.get('background')).toBe('var(--dsw-alias-state-success-primary)')
+    expect(declarations('.localBuildBadge')?.get('box-shadow')).toBe('0 0 0 2px var(--dsw-specific-sidebar-fill)')
   })
 })

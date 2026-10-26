@@ -34,6 +34,8 @@ export const en = {
   'expand': 'Expand',
   'back': 'Back',
   'brand.localBuild': 'DSH Local Build',
+  'brand.wordmark': 'DSH',
+  'brand.localBuildStamp': 'LOCAL BUILD',
   'workspace.defaultName': 'Default workspace',
   'unknown': 'Unknown',
   'none': 'None',

@@ -270,6 +270,7 @@ export function SidebarRoot({
         {!wide && !windowsTitlebar && (
           <span className={css.railMark} aria-hidden="true">
             {renderSlot('sidebar.brand.mark', { size: 24 }, { fallback: <FishLogo size={24} /> })}
+            <span className={css.localBuildBadge} title={t('brand.localBuild')} />
           </span>
         )}
         {/* Rail icons render at 18 (figma rail spec); expanded keeps the glyph-native sizes. */}
@@ -320,7 +321,10 @@ export function SidebarRoot({
                 })}
               </span>
               <span className={css.brandName}>
-                {renderSlot('sidebar.brand.name', {}, {
+                {renderSlot('sidebar.brand.name', {
+                  wordmark: t('brand.wordmark'),
+                  localBuildStamp: t('brand.localBuildStamp'),
+                }, {
                   fallback: buildVersion === undefined
                     ? <span className={css.fallbackBrandName}>{t('brand.localBuild')}</span>
                     : (

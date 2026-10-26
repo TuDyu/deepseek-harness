@@ -35,6 +35,8 @@ export const de = {
   'expand': 'Ausklappen',
   'back': 'Zurück',
   'brand.localBuild': 'Lokaler DSH-Build',
+  'brand.wordmark': 'DSH',
+  'brand.localBuildStamp': 'LOCAL BUILD',
   'workspace.defaultName': 'Standardarbeitsbereich',
   'unknown': 'Unbekannt',
   'none': 'Keine',
